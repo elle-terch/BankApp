@@ -25,5 +25,21 @@ namespace BankApp
             return account;
 
         }
+
+        public static List<Account> GetAllAccounts()
+        {
+            return accounts;
+
+        }
+
+        public static void Deposit(int accountNumber, decimal amount)
+        {
+            var account = accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
+            if (account != null)
+            {
+                account.Deposit(amount);
+            }
+        }
+
     }
 }
