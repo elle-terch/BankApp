@@ -11,8 +11,20 @@ namespace BankApp
         //this is where you're opening up your workbook, so to speak
         private static BankModel db = new BankModel();
 
+        /// <summary>
+        /// Create a bank account
+        /// </summary>
+        /// <param name="emailAddress">Email Address for the account</param>
+        /// <param name="accountName">Name of the account</param>
+        /// <param name="accountType">Type of account</param>
+        /// <returns>The bank account</returns>
+        /// <exception cref="ArgumentNullException" />
+
         public static Account CreateAccount(string emailAddress, string accountName = "Default Account", TypeOfAccount accountType = TypeOfAccount.Checking)
         {
+            if (string.IsNullOrEmpty(emailAddress))
+                throw new ArgumentNullException("emailAddress", "Email Address cannot be empty.");
+
             var account = new Account
             {
                 EmailAddress = emailAddress,

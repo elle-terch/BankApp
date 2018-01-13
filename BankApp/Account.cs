@@ -26,8 +26,10 @@ namespace BankApp
         [Key]
         public int AccountNumber { get; private set; }
         [StringLength(100, ErrorMessage = "Email address should be of 100 characters or less.")]
+        [Required]
         public string EmailAddress { get; set; }
         public string AccountName { get; set; }
+        [Required]
         public TypeOfAccount AccountType { get; set; }
         public decimal Balance { get; private set; }
         #endregion
